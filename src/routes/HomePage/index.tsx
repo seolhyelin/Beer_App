@@ -20,10 +20,12 @@ const HomePage = () => {
       </section>
       <section className={styles.searchContainer}>
         <label htmlFor='beer'>Search your Beer !</label>
-        <input id='beer' placeholder='gpgp' />
-        <button type='button'>
-          <Search className={styles.searchIcon} />
-        </button>
+        <div className={styles.searchBar}>
+          <input id='beer' placeholder='gpgp' />
+          <button type='button'>
+            <Search className={styles.searchIcon} />
+          </button>
+        </div>
       </section>
     </main>
   );
