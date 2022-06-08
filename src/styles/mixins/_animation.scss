@@ -1,3 +1,5 @@
+/* stylelint-disable scss/no-global-function-names */
+
 @mixin cubicBezier($duration) {
   transition: $duration;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -12,3 +14,21 @@
     transform: rotate(359deg);
   }
 }
+
+@function particles($max) {
+  $val: 0 0 #ffffff;
+  @for $i from 1 through $max {
+    $val: #{$val}, random($SPACING) + px random($SPACING) + px #ffffff;
+  }
+  @return $val;
+}
+
+@mixin particles($max) {
+  box-shadow: particles($max);
+}
+
+$SPACING: 2560px;
+$TIME1: 60s;
+$TIME2: 120s;
+$TIME3: 180s;
+$TIME4: 600s;
