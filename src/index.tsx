@@ -7,13 +7,15 @@ import reportWebVitals from './reportWebVitals';
 import './styles/index.scss';
 
 import ParticlesEffect from 'components/ParticlesEffect';
+import Header from 'components/Header';
 import Routes from './routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <ParticlesEffect /> */}
+      <ParticlesEffect />
+      <Header />
       <Routes />
     </BrowserRouter>
   </React.StrictMode>

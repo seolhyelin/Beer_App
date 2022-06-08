@@ -1,10 +1,8 @@
-import ParticlesEffect from 'components/ParticlesEffect';
 import styles from './homePage.module.scss';
 
 const HomePage = () => {
   return (
     <main>
-      <ParticlesEffect />
       <section className={styles.textContainer}>
         <h1>I work</h1>
         <h1>until beer o’clock.</h1>
