@@ -3,6 +3,8 @@ import { getBeerAPI } from 'services/beer';
 
 import styles from './listPage.module.scss';
 
+import CardBoard from 'components/CardBoard';
+
 import { Search } from 'assets/svg';
 
 const page = 1;
@@ -27,8 +29,12 @@ const ListPage = () => {
       </section>
       <section className={styles.listBox}>
         <ul>
-          {data?.map((item) => {
-            return <li key={item.id}>{item.name}</li>;
+          {data?.map((beerInfo) => {
+            return (
+              <li key={`${beerInfo.id}-${beerInfo.name}`}>
+                <CardBoard beerInfo={beerInfo} />
+              </li>
+            );
           })}
         </ul>
       </section>
