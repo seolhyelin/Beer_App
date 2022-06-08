@@ -1,11 +1,13 @@
+import { Search } from 'assets/svg';
+
 import styles from './homePage.module.scss';
 
 const HomePage = () => {
   return (
     <main>
       <section className={styles.textContainer}>
-        <h1>I work</h1>
-        <h1>until beer o’clock.</h1>
+        <p>I work</p>
+        <p>until beer o’clock.</p>
         <span>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum praesentium asperiores nobis aut omnis ipsam
           voluptatem delectus sit officiis ad impedit consectetur, minus explicabo aspernatur laudantium mollitia
@@ -15,6 +17,13 @@ const HomePage = () => {
           deleniti debitis provident nobis numquam maiores, nostrum eveniet libero beatae! Voluptas dolor tempora illo,
           quos sequi nihil iure sunt tenetur eos molestiae voluptates perspiciatis non assumenda quo blanditiis debitis.
         </span>
+      </section>
+      <section className={styles.searchContainer}>
+        <label htmlFor='beer'>Search your Beer !</label>
+        <input id='beer' placeholder='gpgp' />
+        <button type='button'>
+          <Search className={styles.searchIcon} />
+        </button>
       </section>
     </main>
   );

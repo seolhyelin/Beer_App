@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import reportWebVitals from './reportWebVitals';
 
 import './styles/index.scss';
@@ -10,13 +11,18 @@ import ParticlesEffect from 'components/ParticlesEffect';
 import Header from 'components/Header';
 import Routes from './routes';
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ParticlesEffect />
-      <Header />
-      <Routes />
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <ParticlesEffect />
+        <Header />
+        <Routes />
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
