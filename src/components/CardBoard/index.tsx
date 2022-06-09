@@ -8,11 +8,23 @@ interface Props {
 
 const CardBoard = ({ beerInfo }: Props) => {
   return (
-    <article>
-      <p>{beerInfo.name}</p>
-      <p>{beerInfo.description}</p>
-      <img src={beerInfo.image_url} width='200px' alt='test' />
-    </article>
+    <section className={styles.projectContainer}>
+      <div className={styles.projectGrid}>
+        <div key={`${beerInfo.id}`} className={styles.projectCard}>
+          <div
+            className={styles.projectGIF}
+            style={{
+              backgroundImage: `url(${beerInfo.image_url})`,
+            }}
+          />
+          <div className={styles.contentContainer}>
+            <p className={styles.contentCategory}>ABV {beerInfo.abv}</p>
+            <h3 className={styles.contentHead}>{beerInfo.name}</h3>
+            <span>{beerInfo.tagline}</span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
