@@ -1,18 +1,20 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
+
+import Button from 'components/Button';
 
 const Header = () => {
   return (
-    <header>
-      <NavLink to='/' className={styles.headerButton}>
-        Home
-      </NavLink>
-      <NavLink to='list' className={styles.headerButton}>
-        Beer List
-      </NavLink>
-      <NavLink to='favorite' className={styles.headerButton}>
-        Favorite
-      </NavLink>
+    <header className={styles.header}>
+      <Link to='/'>
+        <Button>Home</Button>
+      </Link>
+      <Link to='list'>
+        <Button>Beer List</Button>
+      </Link>
+      <Link to='favorite'>
+        <Button>Favorite</Button>
+      </Link>
     </header>
   );
 };

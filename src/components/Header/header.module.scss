@@ -6,19 +6,6 @@ header {
   display: flex;
   justify-content: space-evenly;
   padding: 20px;
+  margin-bottom: 30px;
   border-bottom: 1px solid colors.$POINT;
-
-  .headerButton {
-    padding: 15px 25px;
-    font-size: 20px;
-    color: colors.$POINT;
-    background-color: inherit;
-    border: 1px solid colors.$POINT;
-    border-radius: 8px;
-
-    &:hover {
-      color: colors.$THEME;
-      background-color: colors.$POINT;
-    }
-  }
 }

@@ -30,21 +30,18 @@ const ListPage = () => {
       <section className={styles.searchBox}>
         <label htmlFor='beer'>Search your Beer !</label>
         <div className={styles.searchBar}>
-          <input id='beer' placeholder='gpgp' />
+          <input id='beer' placeholder='Search Beer' />
           <button type='button'>
             <Search className={styles.searchIcon} />
           </button>
         </div>
       </section>
-      <button type='button' onClick={handleModal} className={styles.openButton}>
-        열어!
-      </button>
       <ModalPortal>{isOpenModal && <Modal setIsOpenModal={setIsOpenModal} />}</ModalPortal>
       <section className={styles.listBox}>
         <ul>
           {data?.map((beerInfo) => {
             return (
-              <li key={`${beerInfo.id}-${beerInfo.name}`}>
+              <li key={`${beerInfo.id}-${beerInfo.name}`} onClick={handleModal} role='presentation'>
                 <CardBoard beerInfo={beerInfo} />
               </li>
             );

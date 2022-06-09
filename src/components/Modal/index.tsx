@@ -1,9 +1,13 @@
 import { useRef } from 'react';
 import { useClickAway } from 'react-use';
+
+import type { IBeerInfoType } from 'types/beer';
+
 import styles from './modal.module.scss';
 
 interface Props {
   setIsOpenModal: Function;
+  // beerInfo: IBeerInfoType;
 }
 
 const Modal = ({ setIsOpenModal }: Props) => {
@@ -20,7 +24,7 @@ const Modal = ({ setIsOpenModal }: Props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modalBox} ref={outsideRef}>
-        <p>맥주 정보</p>
+        <p>Beer Name</p>
         <button type='button' onClick={handleCloseButtonClick}>
           닫어
         </button>
