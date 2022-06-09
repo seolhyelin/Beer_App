@@ -1,20 +1,29 @@
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getBeerAPI } from 'services/beer';
 
-import styles from './listPage.module.scss';
+import { Search } from 'assets/svg';
 
 import CardBoard from 'components/CardBoard';
+import ModalPortal from 'components/Modal/ModalPortal';
+import Modal from 'components/Modal';
 
-import { Search } from 'assets/svg';
+import styles from './listPage.module.scss';
 
 const page = 1;
 
 const ListPage = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   const { data } = useQuery(['beerListAPI', page], () =>
     getBeerAPI({ page }).then((res) => {
       return res.data;
     })
   );
+
+  const handleModal = () => {
+    setIsOpenModal(true);
+  };
 
   return (
     <div className={styles.listContainer}>
@@ -27,6 +36,10 @@ const ListPage = () => {
           </button>
         </div>
       </section>
+      <button type='button' onClick={handleModal} className={styles.openButton}>
+        열어!
+      </button>
+      <ModalPortal>{isOpenModal && <Modal setIsOpenModal={setIsOpenModal} />}</ModalPortal>
       <section className={styles.listBox}>
         <ul>
           {data?.map((beerInfo) => {

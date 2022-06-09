@@ -5,6 +5,7 @@
   .searchBox {
     display: flex;
     flex-direction: column;
+    margin: 30px;
     font-family: 'Tiro Telugu', serif;
     text-align: center;
 
@@ -45,5 +46,11 @@
         }
       }
     }
+  }
+
+  .openButton {
+    margin: 50px;
+    font-size: 30px;
+    color: red;
   }
 }
