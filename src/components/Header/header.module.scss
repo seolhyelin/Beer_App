@@ -15,5 +15,10 @@ header {
     background-color: inherit;
     border: 1px solid colors.$POINT;
     border-radius: 8px;
+
+    &:hover {
+      color: colors.$THEME;
+      background-color: colors.$POINT;
+    }
   }
 }

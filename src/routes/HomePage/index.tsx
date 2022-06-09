@@ -18,15 +18,6 @@ const HomePage = () => {
           quos sequi nihil iure sunt tenetur eos molestiae voluptates perspiciatis non assumenda quo blanditiis debitis.
         </span>
       </section>
-      <section className={styles.searchContainer}>
-        <label htmlFor='beer'>Search your Beer !</label>
-        <div className={styles.searchBar}>
-          <input id='beer' placeholder='gpgp' />
-          <button type='button'>
-            <Search className={styles.searchIcon} />
-          </button>
-        </div>
-      </section>
     </main>
   );
 };

@@ -1,14 +1,18 @@
+import { NavLink } from 'react-router-dom';
 import styles from './header.module.scss';
 
 const Header = () => {
   return (
     <header>
-      <button type='button' className={styles.headerButton}>
+      <NavLink to='/' className={styles.headerButton}>
         Home
-      </button>
-      <button type='button' className={styles.headerButton}>
+      </NavLink>
+      <NavLink to='list' className={styles.headerButton}>
+        Beer List
+      </NavLink>
+      <NavLink to='favorite' className={styles.headerButton}>
         Favorite
-      </button>
+      </NavLink>
     </header>
   );
 };
