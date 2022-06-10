@@ -39,9 +39,9 @@ const Modal = ({ setIsOpenModal, beerInfo }: Props) => {
             <p className={styles.pointText}>Tips</p>
             <span className={styles.descriptionText}>{brewers_tips}</span>
           </div>
-          {/* <button type='button' onClick={handleCloseButtonClick}>
+          <button type='button' onClick={handleCloseButtonClick}>
             닫어
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

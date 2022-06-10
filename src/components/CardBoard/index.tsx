@@ -27,6 +27,7 @@ const CardBoard = ({ beerInfo }: Props) => {
             backgroundImage: `url(${beerInfo.image_url})`,
           }}
         />
+
         <div className={styles.contentContainer}>
           <p className={styles.contentCategory}>ABV {beerInfo.abv}</p>
           <h3 className={styles.contentHead}>{beerInfo.name}</h3>
