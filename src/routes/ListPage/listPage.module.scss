@@ -48,9 +48,19 @@
     }
   }
 
-  .openButton {
-    margin: 50px;
-    font-size: 30px;
-    color: red;
+  .listBox {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100%;
+    padding: 2vh 24px;
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 24px;
+      width: 100%;
+      max-width: 1200px;
+    }
   }
 }

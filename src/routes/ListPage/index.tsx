@@ -1,4 +1,5 @@
-import { useState } from 'react';
+/* eslint-disable no-promise-executor-return */
+import { useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { getBeerAPI } from 'services/beer';
 
@@ -8,12 +9,19 @@ import CardBoard from 'components/CardBoard';
 import ModalPortal from 'components/Modal/ModalPortal';
 import Modal from 'components/Modal';
 
+import { useRecoilState } from 'recoil';
+import { beerListState } from 'recoil/beerList';
+
 import styles from './listPage.module.scss';
 
 const page = 1;
 
 const ListPage = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+  const [beerList, setBeerList] = useRecoilState(beerListState);
+  const [listPage, setListPage] = useState(1);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const targetRef = useRef(null);
 
   const { data } = useQuery(['beerListAPI', page], () =>
     getBeerAPI({ page }).then((res) => {
@@ -21,8 +29,15 @@ const ListPage = () => {
     })
   );
 
-  const handleModal = () => {
-    setIsOpenModal(true);
+  // const handleModal = () => {
+  //   setIsOpenModal(true);
+  // };
+
+  const getMoreList = async () => {
+    setIsLoaded(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const newListPage = listPage + 1;
   };
 
   return (
@@ -36,12 +51,11 @@ const ListPage = () => {
           </button>
         </div>
       </section>
-      <ModalPortal>{isOpenModal && <Modal setIsOpenModal={setIsOpenModal} />}</ModalPortal>
       <section className={styles.listBox}>
         <ul>
           {data?.map((beerInfo) => {
             return (
-              <li key={`${beerInfo.id}-${beerInfo.name}`} onClick={handleModal} role='presentation'>
+              <li key={`${beerInfo.id}-${beerInfo.name}`}>
                 <CardBoard beerInfo={beerInfo} />
               </li>
             );

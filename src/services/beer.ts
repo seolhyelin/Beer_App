@@ -9,7 +9,7 @@ interface BeerParams {
 }
 
 export const getBeerAPI = (params: BeerParams) =>
-  axios.get<IBeerInfoType[]>(url, { params: { ...params, per_page: 10 } });
+  axios.get<IBeerInfoType[]>(url, { params: { ...params, per_page: 20 } });
 
 // https://api.punkapi.com/v2/beers?per_page=10&page={항상 변함}
 //  export const searchBeerAPI = (params: BeerParams) =>

@@ -7,10 +7,10 @@ import styles from './modal.module.scss';
 
 interface Props {
   setIsOpenModal: Function;
-  // beerInfo: IBeerInfoType;
+  beerInfo: IBeerInfoType;
 }
 
-const Modal = ({ setIsOpenModal }: Props) => {
+const Modal = ({ setIsOpenModal, beerInfo }: Props) => {
   const outsideRef = useRef<HTMLInputElement>(null);
 
   const handleCloseButtonClick = () => {
@@ -24,10 +24,13 @@ const Modal = ({ setIsOpenModal }: Props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modalBox} ref={outsideRef}>
-        <p>Beer Name</p>
-        <button type='button' onClick={handleCloseButtonClick}>
-          닫어
-        </button>
+        <div className={styles.test}>
+          <p>{beerInfo.name}</p>
+          <span>{beerInfo.description}</span>
+          <button type='button' onClick={handleCloseButtonClick}>
+            닫어
+          </button>
+        </div>
       </div>
     </div>
   );

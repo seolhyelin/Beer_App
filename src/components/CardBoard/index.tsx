@@ -1,30 +1,39 @@
-import styles from './cardBoard.module.scss';
+import { useState } from 'react';
 
 import type { IBeerInfoType } from 'types/beer';
+import ModalPortal from 'components/Modal/ModalPortal';
+import Modal from 'components/Modal';
+
+import styles from './cardBoard.module.scss';
 
 interface Props {
   beerInfo: IBeerInfoType;
 }
 
 const CardBoard = ({ beerInfo }: Props) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
   return (
-    <section className={styles.projectContainer}>
-      <div className={styles.projectGrid}>
-        <div key={`${beerInfo.id}`} className={styles.projectCard}>
-          <div
-            className={styles.projectGIF}
-            style={{
-              backgroundImage: `url(${beerInfo.image_url})`,
-            }}
-          />
-          <div className={styles.contentContainer}>
-            <p className={styles.contentCategory}>ABV {beerInfo.abv}</p>
-            <h3 className={styles.contentHead}>{beerInfo.name}</h3>
-            <span>{beerInfo.tagline}</span>
-          </div>
+    <>
+      <ModalPortal>{isOpenModal && <Modal setIsOpenModal={handleModal} beerInfo={beerInfo} />}</ModalPortal>
+      <div key={`${beerInfo.id}`} className={styles.projectCard} onClick={handleModal} role='presentation'>
+        <div
+          className={styles.projectGIF}
+          style={{
+            backgroundImage: `url(${beerInfo.image_url})`,
+          }}
+        />
+        <div className={styles.contentContainer}>
+          <p className={styles.contentCategory}>ABV {beerInfo.abv}</p>
+          <h3 className={styles.contentHead}>{beerInfo.name}</h3>
+          <span>{beerInfo.tagline}</span>
         </div>
       </div>
-    </section>
+    </>
   );
 };
 
