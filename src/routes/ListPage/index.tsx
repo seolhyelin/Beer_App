@@ -14,10 +14,11 @@ import { beerListState } from 'recoil/beerList';
 
 import styles from './listPage.module.scss';
 
+import type { IBeerInfoType } from 'types/beer';
+
 const page = 1;
 
 const ListPage = () => {
-  // const [isOpenModal, setIsOpenModal] = useState(false);
   const [beerList, setBeerList] = useRecoilState(beerListState);
   const [listPage, setListPage] = useState(1);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,15 +30,19 @@ const ListPage = () => {
     })
   );
 
-  // const handleModal = () => {
-  //   setIsOpenModal(true);
-  // };
-
   const getMoreList = async () => {
     setIsLoaded(true);
 
     await new Promise((resolve) => setTimeout(resolve, 1500));
     const newListPage = listPage + 1;
+
+    const params = {
+      page: newListPage,
+    };
+
+    // const {
+    //   data: { data },
+    // } = await getBeerAPI(params);
   };
 
   return (
