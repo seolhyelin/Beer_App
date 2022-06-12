@@ -25,6 +25,15 @@ function useFavoriteList() {
     setIsShowing(!isShowing);
   };
 
+  const deleteFavoriteList = () => {
+    const local = JSON.parse(localStorage.getItem('favoriteList') as string);
+    const after = local.filter((el: IBeerInfoType) => el.name !== currentBeer);
+
+    setFavoriteList(after);
+    localStorage.setItem('favoriteList', JSON.stringify(after));
+    setIsShowing(!isShowing);
+  };
+
   return <div>gkgk</div>;
 }
 export default useFavoriteList;
