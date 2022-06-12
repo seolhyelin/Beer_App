@@ -1,18 +1,53 @@
 /* eslint-disable camelcase */
 import { useRef } from 'react';
 import { useClickAway } from 'react-use';
+import { useRecoilState } from 'recoil';
 
+import { favoriteState } from 'recoil/beerList';
 import type { IBeerInfoType } from 'types/beer';
+import { FAVORITE_BEER_KEY, setLocalStorage } from 'services/store';
+
+import { BookMark } from 'assets/svg';
 
 import styles from './modal.module.scss';
 
 interface Props {
   setIsOpenModal: Function;
-  beerInfo: IBeerInfoType;
+  beer: IBeerInfoType;
 }
 
-const Modal = ({ setIsOpenModal, beerInfo }: Props) => {
-  const { name, abv, description, first_brewed, brewers_tips, image_url } = beerInfo;
+const Modal = ({ setIsOpenModal, beer }: Props) => {
+  const { name, abv, description, first_brewed, brewers_tips, image_url } = beer;
+  const [favoriteBeerList, setFavoriteBeerList] = useRecoilState(favoriteState);
+
+  const isFavorite = () => {
+    return favoriteBeerList.find((item) => item.name === name);
+  };
+
+  const addBeer = () => {
+    const newFavorite = isFavorite() ? favoriteBeerList : [...favoriteBeerList, beer];
+
+    setFavoriteBeerList(newFavorite);
+    setLocalStorage(FAVORITE_BEER_KEY, newFavorite);
+  };
+
+  const deleteBeer = () => {
+    const newFavorite = favoriteBeerList.filter((item) => item.name !== name);
+
+    setFavoriteBeerList(newFavorite);
+    setLocalStorage(FAVORITE_BEER_KEY, newFavorite);
+  };
+
+  const handleFavoriteButton = (e: { currentTarget: { className: string } }) => {
+    const { className } = e.currentTarget;
+
+    if (className === 'onBookmark') {
+      addBeer();
+    } else if (className === 'offBookmark') {
+      deleteBeer();
+    }
+  };
+
   const outsideRef = useRef<HTMLInputElement>(null);
 
   const handleCloseButtonClick = () => {
@@ -31,6 +66,13 @@ const Modal = ({ setIsOpenModal, beerInfo }: Props) => {
             <img src={image_url} alt='beerImage' />
           </div>
           <div className={styles.infoBox}>
+            <button
+              type='button'
+              className={isFavorite() ? 'offBookmark' : 'onBookmark'}
+              onClick={handleFavoriteButton}
+            >
+              {isFavorite() ? <BookMark className={styles.offBookmark} /> : <BookMark className={styles.onBookmark} />}
+            </button>
             <p className={styles.pointText}>{name}</p>
             <p className={styles.descriptionText}>ABV {abv}</p>
             <p className={styles.descriptionText}>BREWED {first_brewed}</p>

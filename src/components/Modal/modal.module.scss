@@ -36,6 +36,15 @@
       .infoBox {
         margin-left: 30px;
 
+        .onBookmark {
+          float: right;
+        }
+
+        .offBookmark {
+          float: right;
+          fill: red;
+        }
+
         .pointText {
           margin-top: 10px;
           margin-bottom: 10px;

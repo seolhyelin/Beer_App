@@ -19,7 +19,7 @@ const CardBoard = ({ beerInfo }: Props) => {
 
   return (
     <>
-      <ModalPortal>{isOpenModal && <Modal setIsOpenModal={handleModal} beerInfo={beerInfo} />}</ModalPortal>
+      <ModalPortal>{isOpenModal && <Modal setIsOpenModal={handleModal} beer={beerInfo} />}</ModalPortal>
       <div key={`${beerInfo.id}`} className={styles.projectCard} onClick={handleModal} role='presentation'>
         <div
           className={styles.projectGIF}
