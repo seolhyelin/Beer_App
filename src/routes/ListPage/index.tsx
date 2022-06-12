@@ -2,48 +2,34 @@
 import { useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { getBeerAPI } from 'services/beer';
-
-import { Search } from 'assets/svg';
+import { useInView } from 'react-intersection-observer';
 
 import CardBoard from 'components/CardBoard';
 import ModalPortal from 'components/Modal/ModalPortal';
 import Modal from 'components/Modal';
+import Loader from 'components/Loader';
 
 import { useRecoilState } from 'recoil';
 import { beerListState } from 'recoil/beerList';
 
-import styles from './listPage.module.scss';
-
 import type { IBeerInfoType } from 'types/beer';
+
+import { Search } from 'assets/svg';
+import styles from './listPage.module.scss';
 
 const page = 1;
 
 const ListPage = () => {
   const [beerList, setBeerList] = useRecoilState(beerListState);
-  const [listPage, setListPage] = useState(1);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const targetRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [ref, inView] = useInView();
 
   const { data } = useQuery(['beerListAPI', page], () =>
     getBeerAPI({ page }).then((res) => {
       return res.data;
     })
   );
-
-  const getMoreList = async () => {
-    setIsLoaded(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    const newListPage = listPage + 1;
-
-    const params = {
-      page: newListPage,
-    };
-
-    // const {
-    //   data: { data },
-    // } = await getBeerAPI(params);
-  };
 
   return (
     <div className={styles.listContainer}>
