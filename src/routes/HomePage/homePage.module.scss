@@ -3,8 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Josefin+Sans:wght@400;700&family=Noto+Sans+KR:wght@400;900&family=Pacifico&family=Raleway:wght@900&family=Rubik+Puddles&family=Tiro+Telugu&display=swap');
 
 main {
-  width: 100%;
+  width: 1440px;
   height: 100vh;
+  margin: 0 auto;
   font-family: 'Tiro Telugu', serif;
   text-align: center;
 
@@ -17,6 +18,7 @@ main {
     }
 
     span {
+      line-height: 40px;
       font-size: 25px;
       color: colors.$TEXT;
     }

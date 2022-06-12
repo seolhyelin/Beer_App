@@ -36,13 +36,12 @@
       .infoBox {
         margin-left: 30px;
 
-        .onBookmark {
+        button {
           float: right;
-        }
 
-        .offBookmark {
-          float: right;
-          fill: red;
+          .offBookmark {
+            fill: colors.$INDIGO;
+          }
         }
 
         .pointText {
@@ -59,8 +58,10 @@
         }
       }
 
-      button {
-        padding: 10px 20px;
+      .closeButton {
+        padding: 15px 30px;
+        margin-top: 100px;
+        font-size: 20px;
         background-color: colors.$TEXT;
         border-radius: 10px;
       }

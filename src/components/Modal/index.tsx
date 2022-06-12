@@ -80,10 +80,10 @@ const Modal = ({ setIsOpenModal, beer }: Props) => {
             <span className={styles.descriptionText}>{description}</span>
             <p className={styles.pointText}>Tips</p>
             <span className={styles.descriptionText}>{brewers_tips}</span>
+            <button type='button' className={styles.closeButton} onClick={handleCloseButtonClick}>
+              Close
+            </button>
           </div>
-          <button type='button' onClick={handleCloseButtonClick}>
-            닫어
-          </button>
         </div>
       </div>
     </div>
