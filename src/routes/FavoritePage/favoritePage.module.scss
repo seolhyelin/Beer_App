@@ -8,6 +8,12 @@
   font-family: 'Tiro Telugu', serif;
   text-align: center;
 
+  p {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: colors.$TEXT;
+  }
+
   .listBox {
     display: flex;
     align-items: flex-start;

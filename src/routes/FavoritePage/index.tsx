@@ -23,6 +23,7 @@ const FavoritePage = () => {
 
   return (
     <div className={styles.favoriteContainer}>
+      <p>My Favorite Beer</p>
       <section className={styles.listBox}>
         <ul>
           {favoriteBeerList?.map((beerInfo) => {

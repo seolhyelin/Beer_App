@@ -1,0 +1,48 @@
+@use '/src/styles/constants/colors';
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Josefin+Sans:wght@400;700&family=Noto+Sans+KR:wght@400;900&family=Pacifico&family=Raleway:wght@900&family=Rubik+Puddles&family=Tiro+Telugu&display=swap');
+
+.searchBox {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  font-family: 'Tiro Telugu', serif;
+  text-align: center;
+
+  label {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: colors.$TEXT;
+  }
+
+  .searchBar {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+    input {
+      width: 400px;
+      padding: 15px 30px;
+      margin-right: 20px;
+      font-size: 20px;
+      color: colors.$GRAYA;
+      border: 1px solid colors.$TEXT;
+      border-radius: 8px;
+
+      &::placeholder {
+        color: colors.$GRAYA;
+      }
+    }
+
+    button {
+      width: 60px;
+      height: 55px;
+      border: 1px solid colors.$TEXT;
+      border-radius: 8px;
+
+      .searchIcon {
+        width: 30px;
+        fill: colors.$TEXT;
+      }
+    }
+  }
+}

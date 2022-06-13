@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 import CardBoard from 'components/CardBoard';
 import Loader from 'components/Loader';
+import SearchForm from 'components/SearchForm';
 
 import { useRecoilState } from 'recoil';
 import { beerListState } from 'recoil/beerList';
@@ -29,15 +30,7 @@ const ListPage = () => {
 
   return (
     <div className={styles.listContainer}>
-      <section className={styles.searchBox}>
-        <label htmlFor='beer'>Search your Beer !</label>
-        <div className={styles.searchBar}>
-          <input id='beer' placeholder='Search Beer' />
-          <button type='button'>
-            <Search className={styles.searchIcon} />
-          </button>
-        </div>
-      </section>
+      <SearchForm />
       <section className={styles.listBox}>
         <ul>
           {data?.map((beerInfo) => {
