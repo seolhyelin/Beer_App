@@ -1,2 +1,26 @@
 @use '/src/styles/constants/colors';
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Josefin+Sans:wght@400;700&family=Noto+Sans+KR:wght@400;900&family=Pacifico&family=Raleway:wght@900&family=Rubik+Puddles&family=Tiro+Telugu&display=swap');
+
+.favoriteContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  font-family: 'Tiro Telugu', serif;
+  text-align: center;
+
+  .listBox {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100%;
+    padding: 2vh 24px;
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 24px;
+      width: 100%;
+      max-width: 1200px;
+    }
+  }
+}

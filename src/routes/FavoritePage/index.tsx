@@ -22,17 +22,19 @@ const FavoritePage = () => {
   });
 
   return (
-    <section>
-      <ul>
-        {favoriteBeerList?.map((beerInfo) => {
-          return (
-            <li key={beerInfo.id}>
-              <CardBoard beerInfo={beerInfo} />
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <div className={styles.favoriteContainer}>
+      <section className={styles.listBox}>
+        <ul>
+          {favoriteBeerList?.map((beerInfo) => {
+            return (
+              <li key={beerInfo.id}>
+                <CardBoard beerInfo={beerInfo} />
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </div>
   );
 };
 
