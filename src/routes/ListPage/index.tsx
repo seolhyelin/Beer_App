@@ -5,8 +5,6 @@ import { getBeerAPI } from 'services/beer';
 import { useInView } from 'react-intersection-observer';
 
 import CardBoard from 'components/CardBoard';
-import ModalPortal from 'components/Modal/ModalPortal';
-import Modal from 'components/Modal';
 import Loader from 'components/Loader';
 
 import { useRecoilState } from 'recoil';
@@ -17,15 +15,13 @@ import type { IBeerInfoType } from 'types/beer';
 import { Search } from 'assets/svg';
 import styles from './listPage.module.scss';
 
-const page = 1;
-
 const ListPage = () => {
   const [beerList, setBeerList] = useRecoilState(beerListState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
   const [ref, inView] = useInView();
 
-  const { data } = useQuery(['beerListAPI', page], () =>
+  const { data, isLoading } = useQuery(['beerListAPI', page], () =>
     getBeerAPI({ page }).then((res) => {
       return res.data;
     })
