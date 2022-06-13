@@ -24,7 +24,8 @@ const ListPage = () => {
   const { isLoading } = useQuery(
     ['beerListAPI', page],
     () =>
-      getBeerAPI({ page }).then((res) => {
+      getBeerAPI({ page }).then(async (res) => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         return res.data;
       }),
     {
@@ -32,18 +33,16 @@ const ListPage = () => {
       onSuccess: (data: IBeerInfoType[]) => {
         const updateBeerList = beerList.concat(data);
         setBeerList(updateBeerList);
-        ref(null);
       },
     }
   );
 
   useEffect(() => {
     if (inView) {
-      console.log(page);
       setPage((prev) => prev + 1);
     }
   }, [inView, setPage]);
-  console.log(beerList);
+
   return (
     <div className={styles.listContainer}>
       <SearchForm />
