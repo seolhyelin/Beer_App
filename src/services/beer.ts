@@ -5,7 +5,7 @@ const url = 'https://api.punkapi.com/v2/beers';
 
 interface BeerParams {
   page?: number;
-  name?: string;
+  beer_name?: string;
 }
 
 export const getBeerAPI = (params: BeerParams) =>

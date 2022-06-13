@@ -16,12 +16,12 @@ const SearchForm = () => {
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const currentSearch = searchParams.get('name');
+    const currentSearch = searchParams.get('beer_name');
 
     if (currentSearch === searchWord) return;
 
     resetBeerList();
-    setSearchParams({ name: searchWord });
+    setSearchParams({ beer_name: searchWord });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

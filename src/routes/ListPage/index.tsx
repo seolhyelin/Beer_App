@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-promise-executor-return */
 import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
@@ -15,16 +16,21 @@ import type { IBeerInfoType } from 'types/beer';
 
 import styles from './listPage.module.scss';
 
+import { useSearchParams } from 'react-router-dom';
+
 const ListPage = () => {
   const [beerList, setBeerList] = useRecoilState(beerListState);
   const [page, setPage] = useState(1);
 
   const [ref, inView] = useInView();
 
+  const [searchParams] = useSearchParams();
+  const beer_name = searchParams.get('beer_name') as string;
+
   const { isLoading } = useQuery(
-    ['beerListAPI', page],
+    ['beerListAPI', page, beer_name],
     () =>
-      getBeerAPI({ page }).then(async (res) => {
+      getBeerAPI({ page, beer_name }).then(async (res) => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         return res.data;
       }),
