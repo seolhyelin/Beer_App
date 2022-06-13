@@ -28,7 +28,7 @@ const FavoritePage = () => {
         <ul>
           {favoriteBeerList?.map((beerInfo) => {
             return (
-              <li key={beerInfo.id}>
+              <li key={beerInfo.abv}>
                 <CardBoard beerInfo={beerInfo} />
               </li>
             );

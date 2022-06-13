@@ -1,5 +1,5 @@
 /* eslint-disable no-promise-executor-return */
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { getBeerAPI } from 'services/beer';
 import { useInView } from 'react-intersection-observer';
@@ -13,7 +13,6 @@ import { beerListState } from 'recoil/beerList';
 
 import type { IBeerInfoType } from 'types/beer';
 
-import { Search } from 'assets/svg';
 import styles from './listPage.module.scss';
 
 const ListPage = () => {
@@ -22,18 +21,35 @@ const ListPage = () => {
 
   const [ref, inView] = useInView();
 
-  const { data, isLoading } = useQuery(['beerListAPI', page], () =>
-    getBeerAPI({ page }).then((res) => {
-      return res.data;
-    })
+  const { isLoading } = useQuery(
+    ['beerListAPI', page],
+    () =>
+      getBeerAPI({ page }).then((res) => {
+        return res.data;
+      }),
+    {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      onSuccess: (data: IBeerInfoType[]) => {
+        const updateBeerList = beerList.concat(data);
+        setBeerList(updateBeerList);
+        ref(null);
+      },
+    }
   );
 
+  useEffect(() => {
+    if (inView) {
+      console.log(page);
+      setPage((prev) => prev + 1);
+    }
+  }, [inView, setPage]);
+  console.log(beerList);
   return (
     <div className={styles.listContainer}>
       <SearchForm />
       <section className={styles.listBox}>
         <ul>
-          {data?.map((beerInfo) => {
+          {beerList?.map((beerInfo) => {
             return (
               <li key={`${beerInfo.id}-${beerInfo.name}`}>
                 <CardBoard beerInfo={beerInfo} />
@@ -42,6 +58,8 @@ const ListPage = () => {
           })}
         </ul>
       </section>
+      {isLoading && <Loader />}
+      {beerList.length !== 0 && <div ref={ref} />}
     </div>
   );
 };

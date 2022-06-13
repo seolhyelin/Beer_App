@@ -22,12 +22,6 @@ interface IBeerInfoType {
   contributed_by: string;
 }
 
-// interface ISearch extends IBeerInfoType {
-//   search: IBeerInfoType[];
-//   totalResult: number;
-//   response: boolean;
-// }
-
 interface IBoilVolumeType {
   value: number;
   unit: string;
