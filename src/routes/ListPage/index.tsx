@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-promise-executor-return */
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { getBeerAPI } from 'services/beer';
 import { useInView } from 'react-intersection-observer';

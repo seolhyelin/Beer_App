@@ -1,5 +1,3 @@
-import { Search } from 'assets/svg';
-
 import styles from './homePage.module.scss';
 
 const HomePage = () => {
