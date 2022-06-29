@@ -1,4 +1,4 @@
-import { useState, FormEvent, ChangeEvent, MouseEvent } from 'react';
+import { useState, FormEvent, ChangeEvent, MouseEvent, KeyboardEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { beerListState } from 'recoil/beerList';
@@ -18,7 +18,7 @@ const SearchForm = () => {
     e.preventDefault();
     const currentSearch = searchParams.get('beer_name');
 
-    if (currentSearch?.toLocaleLowerCase() === searchWord.toLowerCase()) return;
+    if (currentSearch === searchWord.toLowerCase()) return;
 
     resetBeerList();
     setSearchParams({ beer_name: searchWord });
@@ -33,8 +33,11 @@ const SearchForm = () => {
       <label htmlFor='beer'>Search your Beer !</label>
       <div className={styles.searchBar}>
         <input id='beer' placeholder='Search Beer' onChange={handleChange} />
-        <button type='button' onClick={handleSearch}>
+        <button className={styles.searchButton} type='button' onClick={handleSearch}>
           <Search className={styles.searchIcon} />
+        </button>
+        <button className={styles.resetButton} type='button'>
+          Reset
         </button>
       </div>
     </form>

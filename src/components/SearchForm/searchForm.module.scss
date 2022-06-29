@@ -33,7 +33,7 @@
       }
     }
 
-    button {
+    .searchButton {
       width: 60px;
       height: 55px;
       border: 1px solid colors.$TEXT;
@@ -43,6 +43,15 @@
         width: 30px;
         fill: colors.$TEXT;
       }
+    }
+
+    .resetButton {
+      padding: 12px;
+      margin-left: 20px;
+      font-size: 23px;
+      color: colors.$TEXT;
+      border: 1px solid colors.$TEXT;
+      border-radius: 8px;
     }
   }
 }
